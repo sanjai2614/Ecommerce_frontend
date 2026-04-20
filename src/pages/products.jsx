@@ -25,11 +25,7 @@ export default function Products() {
         {/* Loading */}
       
 
-<<<<<<< HEAD
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 my-10 lg:p-0 sm:px-5 px-10 ">
-=======
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 my-10 lg:p-0 sm:px-5 px-10 ">
->>>>>>> 2df63a12abbe53a87fb1c9873c4344466c3f5b0f
           {
              data.map((item) => (
               <ProductCard key={item._id} item={item} />    

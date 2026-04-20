@@ -6,11 +6,7 @@ export default function HeroBanner() {
   return (
     <div >
       {/* Hero Banner */}
-<<<<<<< HEAD
       <div className='px-3 py-7 sm:px-7 flex flex-col sm:flex-row items-center justify-between w-full min-h-120 gap-10'>
-=======
-      <div className='p-7 flex flex-col sm:flex-row items-center justify-between w-full min-h-120 gap-10'>
->>>>>>> 2df63a12abbe53a87fb1c9873c4344466c3f5b0f
         <div className=' flex flex-col gap-4'>
           <h4 className='text-2xl font-serif text-green-500' style={{ fontFamily: "pacifico" }}>
             We introduced

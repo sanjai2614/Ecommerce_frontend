@@ -32,11 +32,7 @@ export default function FeaturedProducts() {
       
       </div>
       
-<<<<<<< HEAD
       <div className="p-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
-=======
-      <div className="p-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
->>>>>>> 2df63a12abbe53a87fb1c9873c4344466c3f5b0f
         {
           data.filter((p=>p.rating === "⭐⭐⭐⭐⭐")).slice(0,4).map((item) => (
             <ProductCard key={item._id} item={item}/>
