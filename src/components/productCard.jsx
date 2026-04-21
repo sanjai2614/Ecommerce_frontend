@@ -67,13 +67,13 @@ export default function ProductCard({ item }) {
         {isLiked ? "❤️" : "🤍"}
       </button>
 
-      {/* 🖼 IMAGE */}
+      {/* IMAGE */}
       <div
         style={{ backgroundImage: `url(${item.image})` }}
         className="w-full h-48 bg-cover bg-center rounded"
       />
 
-      {/* 📦 CONTENT */}
+      {/* CONTENT */}
       <div className="mt-2">
         <h1 className="font-semibold">{item.name}</h1>
 

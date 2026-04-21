@@ -14,6 +14,7 @@ export default function Navbar() {
   const [bar, setBar] = useState(false)
   const [dropdown, setDropdown] = useState(false)
 
+  const sidebarRef = useRef()
   const dropdownRef = useRef()
 
   const toggle = () => {
@@ -28,12 +29,14 @@ export default function Navbar() {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
         setDropdown(false)
       }
-    }
+       if (sidebarRef.current && !sidebarRef.current.contains(e.target)) {
+      setBar(false)
+    }}
 
     document.addEventListener("mousedown", handleClickOutside)
     return () => document.removeEventListener("mousedown", handleClickOutside)
 
-  }, [])
+  }, [bar])
 
   const user = getUser()
   const userId = user?._id
@@ -99,8 +102,16 @@ export default function Navbar() {
       </div>
     </div>
 
+{bar && (
+    <div
+      className="fixed inset-0 bg-black/40 z-40 md:hidden"
+      onClick={() => setBar(false)}
+    ></div>
+  )}
     {/* 🔹 Navbar Bottom / Side Menu */}
-    <div className={`
+    <div
+    ref={sidebarRef}
+    className={`
       fixed md:static top-0 left-0 h-screen md:h-auto min-w-[50%] md:w-full
       bg-[#dcfff9] md:bg-green-600
       transform ${bar ? "translate-x-0" : "-translate-x-full"} md:translate-x-0
@@ -110,7 +121,7 @@ export default function Navbar() {
       {/* ❌ Close Button (mobile only) */}
       <div className="flex justify-end p-4 md:hidden">
         <button onClick={() => setBar(false)}>
-          <i className="ri-close-line text-3xl bg-red-400 text-black"></i>
+          <i className="ri-close-line text-3xl text-black"></i>
         </button>
       </div>
 

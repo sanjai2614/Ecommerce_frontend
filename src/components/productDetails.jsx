@@ -5,11 +5,16 @@ import { toast } from 'react-toastify';
 import { useAddcart } from '../hooks/useAddToCart';
 import { useGetProductsById } from '../hooks/useGetProductsById';
 import ProductDetailsSkeleton from './productdetailSkeleton';
+import { getUser } from '../utils/getUser';
+import { handleBuyNow } from '../utils/deliveryFunction';
 
 export default function ProductDetails() {
 
+  const user = getUser()
+
  
   const { id } = useParams();
+  const { mutate: addToCart, isLoading: cartLoading } = useAddcart()
 
 
     let {data,isLoading,error} = useGetProductsById(id)
@@ -53,13 +58,21 @@ if(error) return <h1>error</h1>
               </h2>
 
               <div className="flex gap-4">
-                <button className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition"
-                 onClick={()=>{addToCart(data._id)}}
+                <button className="bg-green-600 text-white hover:cursor-pointer px-6 py-2 rounded-lg hover:bg-green-700 transition"
+                 disabled={cartLoading}
+                         onClick={(e) => {
+                           e.stopPropagation()
+                           if(!user) return toast.error("please login",{theme:"colored"})
+                           addToCart(data._id)
+                         }}
                  >
-                  Add to Cart
+                {cartLoading ? "Adding..." : "Add to Cart"} 
+        <i className="ri-shopping-cart-line ml-1"></i>
                 </button>
 
-                <button className="border border-gray-300 px-6 py-2 rounded-lg hover:bg-gray-100 transition">
+                <button className="border text-white cursor-pointer border-gray-300 px-6 py-2 rounded-lg bg-blue-600 hover:bg-blue-800 transition"
+                onClick={handleBuyNow}
+                >
                   Buy Now
                 </button>
               </div>

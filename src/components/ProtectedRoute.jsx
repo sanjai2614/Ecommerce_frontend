@@ -1,6 +1,7 @@
 import Cookies from "js-cookie"
 import { Navigate} from "react-router-dom"
 import CryptoJS from "crypto-js"
+import { toast } from "react-toastify"
 
 
 export default function ProtectedRoute({ children }) {
@@ -11,6 +12,7 @@ export default function ProtectedRoute({ children }) {
 
   if (!encryptedData) {
     console.log("No cookie")
+    toast.error("please login",{toastId:"login-fail",theme:'colored'})
     return <Navigate to="/login" />
   }
 
@@ -31,6 +33,7 @@ export default function ProtectedRoute({ children }) {
 
     if (!user?.UserEmail) {
       return <Navigate to="/login" />
+      
     }
 
     return children

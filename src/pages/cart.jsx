@@ -5,6 +5,7 @@ import { useGetCart } from '../hooks/useGetCart'
 import { useUpdateQty } from '../hooks/useUpadateQty'
 import { useRemoveItem } from '../hooks/useRemoveItem'
 import { getUser } from '../utils/getUser'
+import { handleBuyNow } from '../utils/deliveryFunction'
 
 export default function Cart() {
 
@@ -112,7 +113,9 @@ export default function Cart() {
           </div>
 
           {/* BUY BUTTON */}
-          <button className="w-full mt-5 bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition font-semibold">
+          <button className="w-full mt-5 bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition font-semibold"
+          onClick={handleBuyNow}
+          >
             Buy Now
           </button>
 
