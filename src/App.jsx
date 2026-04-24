@@ -38,7 +38,7 @@ function App() {
     <div className='flex flex-col min-h-screen'>
       <Navbar />
       {/* <Home/> */}
-      <ToastContainer position="top-right" autoClose={3000} />
+      <ToastContainer position="top-right" autoClose={3000} theme='colored'/>
       <Routes>
         <Route index path='/' element={<Hero />} />
         <Route path='/signup' element={<Signup />} />
