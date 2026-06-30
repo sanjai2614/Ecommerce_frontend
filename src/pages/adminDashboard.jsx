@@ -1,19 +1,17 @@
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom"
-import Cookies from "js-cookie"
+import { useAuth } from "../context/AuthContext";
+import { useLogout } from "../components/useLogout";
+import { handleLogout } from "../utils/handleLogout";
 
 export default function AdminDashboard() {
 
-
     const navigate = useNavigate()
 
-const handleLogout = () => {
-  if (window.confirm("Are u sure Log out?")) {
-    Cookies.remove("user")
-    navigate("/login")
-    window.location.reload()   // 🔥 important
-  }
-}
+    const {user}=useAuth()
+
+    const { mutate: logoutUser } = useLogout();
+
 
     return (
         <>
@@ -21,6 +19,8 @@ const handleLogout = () => {
             <div className="bg-[#dcfff9] p-5">
 
                 <h1 className="text-2xl font-bold mb-5">Admin Dashboard</h1>
+                <h1 className="text-2xl font-bold mb-5 text-center">Admin : {user.UserName}</h1>
+
 
                 <div className="flex flex-col gap-3 w-full  items-center">
                     <Link to={'/admin/products'}
@@ -36,8 +36,8 @@ const handleLogout = () => {
                         View All user Experience
                     </Link>
 
-                    <button onClick={handleLogout}
-                    className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
+                    <button onClick={()=>handleLogout(logoutUser,navigate)}
+                        className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
                     >Logout
                     </button>
 

@@ -1,40 +1,34 @@
-import Swal from 'sweetalert2'
-import { getUser } from './getUser'
+import Swal from "sweetalert2";
 
-// get delivery date 
-export const getDeliveryDate=()=> {
+// Delivery Date
+export const getDeliveryDate = () => {
+  const today = new Date();
 
-const today = new Date()
-today.setDate(today.getDate()+4)
+  today.setDate(today.getDate() + 4);
 
-return today.toLocaleDateString("en-IN", {
+  return today.toLocaleDateString("en-IN", {
     day: "numeric",
     month: "long",
-    year: "numeric"
-  })
+    year: "numeric",
+  });
+};
 
-}
-
-// buy function
-export const handleBuyNow = () => {
-
-const user =getUser()
-
-// err
+// Buy Function
+export const handleBuyNow = (user, navigate) => {
   if (!user) {
     Swal.fire({
       icon: "warning",
       title: "Login Required",
       text: "Please login to continue",
-      confirmButtonColor: "#16a34a"
-    })
-    navigate("/login")
-    return
+      confirmButtonColor: "#16a34a",
+    });
+
+    navigate("/login");
+    return;
   }
 
-  const deliveryDate = getDeliveryDate()
+  const deliveryDate = getDeliveryDate();
 
-  // success
   Swal.fire({
     icon: "success",
     title: "Order Placed 🎉",
@@ -43,6 +37,6 @@ const user =getUser()
       <p>📦 Delivery by <b>${deliveryDate}</b></p>
     `,
     confirmButtonText: "OK",
-    confirmButtonColor: "#16a34a"
-  })
-}
+    confirmButtonColor: "#16a34a",
+  });
+};

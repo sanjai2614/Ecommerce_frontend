@@ -2,12 +2,9 @@ import React from 'react'
 import { Link, useNavigate } from "react-router-dom"
 import { useState, useEffect, useRef } from 'react'
 import logo from '../assets/logo.png'
-import Cookies from 'js-cookie'
-import CryptoJS from 'crypto-js'
 import { useGetCart } from '../hooks/useGetCart'
-import { getUser } from '../utils/getUser'
 import { useWishlist } from '../hooks/useWishlist'
-import { toast } from 'react-toastify'
+import { useAuth } from '../context/AuthContext'
 
 export default function Navbar() {
 
@@ -38,21 +35,22 @@ export default function Navbar() {
 
   }, [bar])
 
-  const user = getUser()
-  const userId = user?._id
+  const {user,isLoading} = useAuth()
 
-  const role = user?.Role
+  const role = user?.role
 
+  
   // cart count
-  const { data: cart } = useGetCart(userId);
+  const { data: cart } = useGetCart();
   const cartCount = cart?.products?.length || 0
-
-
+  
+  
   // wishlist count 
-  const { data: wishlist } = useWishlist(userId)
+  const { data: wishlist } = useWishlist()
 
   const wishlistCount = wishlist?.length || 0
-
+  if(isLoading) return null
+  
   const handleClick = () => {
     if (role === "admin") {
       navigate("/admin")

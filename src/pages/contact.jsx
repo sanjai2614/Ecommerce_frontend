@@ -36,8 +36,8 @@ export default function Contact() {
 
           <div className="space-y-4 text-gray-700">
             <p>📧 support@example.com</p>
-            <p>📞 +91 98765 43210</p>
-            <p>📍 Hosur, Tamil Nadu</p>
+            <p>📞 +91 xxxxx xxxxx</p>
+            <p>📍 Erode, Tamil Nadu</p>
           </div>
         </div>
 

@@ -1,33 +1,35 @@
-import axios from "./axiosInstance"
+import axios from "./axiosInstance";
 
-export const getCartByUser=async(userId)=>{
-    const res = await axios.get(`/cart/${userId}`)
-    return res.data    
-}
-
-export const addToCart = async ({ userId, productId }) => {
-  const res = await axios.post("/cart/add", {
-    userId,
-    productId
-  }
-);
-
-  return res.data;
+// Get Cart
+export const getCartByUser = async () => {
+  const { data } = await axios.get("/cart");
+  return data;
 };
 
-export const updateQty = async ({ userId, productId, action }) => {
-  const res = await axios.post("/cart/update", {
-    userId,
+// Add to Cart
+export const addToCart = async (productId) => {
+  const { data } = await axios.post("/cart/add", {
     productId,
-    action
   });
-  return res.data;
+
+  return data;
 };
 
-export const removeFromCart = async ({ userId, productId }) => {
-  const res = await axios.post("/cart/remove", {
-    userId,
-    productId
+// Update Quantity
+export const updateQty = async ({ productId, action }) => {
+  const { data } = await axios.post("/cart/update", {
+    productId,
+    action,
   });
-  return res.data;
+
+  return data;
+};
+
+// Remove Item
+export const removeFromCart = async (productId) => {
+  const { data } = await axios.post("/cart/remove", {
+    productId,
+  });
+
+  return data;
 };

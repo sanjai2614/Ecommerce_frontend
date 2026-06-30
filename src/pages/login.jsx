@@ -2,17 +2,17 @@ import React, { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { useLogin } from '../hooks/useLogin'
-import  Cookies from "js-cookie"
-import CryptoJS from 'crypto-js'
-
+import { useAuth } from '../context/AuthContext'
 export default function Login() {
 
   const [email, setEmail] = useState("")
   const [pass, setPass] = useState("")
 
+  const {refetch}=useAuth()
   const navigate = useNavigate()
 
   const loginMutation =useLogin()
+
 
   const handleform = async (e) => {
     e.preventDefault()
@@ -24,28 +24,23 @@ export default function Login() {
     if(!email) return toast.error("Please Enter Email",{theme:"colored"})
     if(!pass) return toast.error("Please Enter Password",{theme:"colored"})
      
-    const secretKey=import.meta.env.VITE_SECRET_KEY
 
     let payload = { UserEmail: email, Password: pass }
     loginMutation.mutate(payload,{
 
-      onSuccess:(res)=>{
+      onSuccess:async(res)=>{
       
         setEmail("")
         setPass("")
         console.log(res)
-
-      const userData={
-          _id:res.data._id,
-          UserEmail:res.data.UserEmail,
-          UserName:res.data.UserName ||"",
-          Role:res.data.role
-        }
-        console.log(userData)
-        const encrypted=CryptoJS.AES.encrypt(JSON.stringify(userData),secretKey).toString()
-        
-        Cookies.set("user",encrypted,{expires:2/24})
+         console.log("Login Success");
+        await refetch()
+        console.log('refetch')
         navigate('/')
+      },
+      onError:(err)=>{
+        console.log(err.message);
+        
       }
       
     })

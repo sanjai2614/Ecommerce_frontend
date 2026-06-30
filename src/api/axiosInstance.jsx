@@ -3,7 +3,8 @@ const URL = import.meta.env.VITE_API_URL
 
 const axiosInstance =axios.create({
     baseURL:URL,
-    headers:{"Content-Type":"application/json"}
+    headers:{"Content-Type":"application/json"},
+    withCredentials:true
 })
 
 export default axiosInstance

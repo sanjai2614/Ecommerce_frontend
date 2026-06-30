@@ -1,4 +1,4 @@
-import { useQueryClient,useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { updateQty } from "../api/cartApi";
 
 export const useUpdateQty = () => {
@@ -6,8 +6,11 @@ export const useUpdateQty = () => {
 
   return useMutation({
     mutationFn: updateQty,
+
     onSuccess: () => {
-      queryClient.invalidateQueries(["cart"]);
-    }
+      queryClient.invalidateQueries({
+        queryKey: ["cart"],
+      });
+    },
   });
 };

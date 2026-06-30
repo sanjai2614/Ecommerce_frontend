@@ -1,34 +1,53 @@
-import { useQuery ,useMutation,useQueryClient} from "@tanstack/react-query";
-import { getWishlist,addToWishlist,removeWishlist } from "../api/wishlistApi";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import {getWishlist,addToWishlist, removeWishlist,} from "../api/wishlistApi";
 import { toast } from "react-toastify";
+import { useAuth } from "../context/AuthContext";
 
-export const useWishlist=(userId)=>{
-    return useQuery({
-        queryKey:['wishlist',userId],
-        queryFn:()=>getWishlist(userId),
-        enabled:!!userId
-    })
-}
+export const useWishlist = () => {
+  const { user } = useAuth();
 
-export const useAddWishlist=()=>{
-    const qc = useQueryClient()
-    return useMutation({
-        mutationFn:addToWishlist,
-        onSuccess:()=>{
-            toast.success("addded to liked",{toastId:"like",theme:"colored"})
-            qc.invalidateQueries(['wishlist'])
-        },onError:()=>{
-            toast.error("failed to add liked",{toastId:"like-fail"})
-        }
-    })
-}
+  return useQuery({
+    queryKey: ["wishlist"],
+    queryFn: getWishlist,
+    enabled: !!user,
+  });
+};
 
-export const useRemoveWishlist=()=>{
-    const qc = useQueryClient()
-    return useMutation({
-        mutationFn:removeWishlist,
-        onSuccess:()=>{
-            qc.invalidateQueries(['wishlist'])
-        }
-    })
-}
+export const useAddWishlist = () => {
+  const qc = useQueryClient();
+
+  return useMutation({
+    mutationFn: addToWishlist,
+
+    onSuccess: () => {
+      toast.success("Added to Wishlist ❤️", {
+        toastId: "wishlist",
+        theme: "colored",
+      });
+
+      qc.invalidateQueries({
+        queryKey: ["wishlist"],
+      });
+    },
+
+    onError: () => {
+      toast.error("Failed", {
+        toastId: "wishlist-error",
+      });
+    },
+  });
+};
+
+export const useRemoveWishlist = () => {
+  const qc = useQueryClient();
+
+  return useMutation({
+    mutationFn: removeWishlist,
+
+    onSuccess: () => {
+      qc.invalidateQueries({
+        queryKey: ["wishlist"],
+      });
+    },
+  });
+};
