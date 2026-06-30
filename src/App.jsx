@@ -29,7 +29,7 @@ import UserDashboard from './pages/userDashboard'
 import Contact from './pages/contact'
 import AdminContacts from './pages/adminContact'
 import Wishlist from './pages/wishlist'
-import { useAuth } from './context/authContext'
+import { useAuth } from './context/AuthContext'
 
 function App() {
 
