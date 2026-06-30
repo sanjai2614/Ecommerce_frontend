@@ -8,7 +8,7 @@ import {
   useWishlist,
 } from "../hooks/useWishlist";
 import { useAuth } from "../context/authContext";
-import Skeleton from "./Skeleton";
+import Skeleton from "./skeleton";
 
 export default function ProductCard({ item }) {
 
