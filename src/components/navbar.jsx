@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import logo from '../assets/logo.png'
 import { useGetCart } from '../hooks/useGetCart'
 import { useWishlist } from '../hooks/useWishlist'
-import { useAuth } from '../context/AuthContext'
+import { useAuth } from '../context/authContext'
 
 export default function Navbar() {
 

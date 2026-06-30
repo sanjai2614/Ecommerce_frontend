@@ -1,7 +1,7 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import {getWishlist,addToWishlist, removeWishlist,} from "../api/wishlistApi";
 import { toast } from "react-toastify";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../context/authContext";
 
 export const useWishlist = () => {
   const { user } = useAuth();

@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../context/authContext";
 import { useGetCart } from "../hooks/useGetCart";
 import { useUpdateQty } from "../hooks/useUpadateQty";
 import { useRemoveItem } from "../hooks/useRemoveItem";

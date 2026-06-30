@@ -1,5 +1,5 @@
 import { useWishlist, useRemoveWishlist } from "../hooks/useWishlist";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../context/authContext";
 
 export default function Wishlist() {
 

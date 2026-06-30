@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../context/authContext";
 import { useAddcart } from "../hooks/useAddToCart";
 import { useGetProductsById } from "../hooks/useGetProductsById";
 import ProductDetailsSkeleton from "./productdetailSkeleton";
