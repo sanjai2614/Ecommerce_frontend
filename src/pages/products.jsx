@@ -2,10 +2,16 @@ import Skeleton from "../components/skeleton";
 import { toast } from "react-toastify";
 import ProductCard from "../components/productCard";
 import { useProducts } from "../hooks/useProducts";
+import { useSearchParams } from "react-router-dom";
 
 export default function Products() {
 
   const {data,isLoading,error}=useProducts()
+
+  const [searchParams]=useSearchParams()
+  const search=searchParams.get('search')||''
+  const category=searchParams.get('category')||''
+
 
   if(isLoading) return <Skeleton/>
 
@@ -13,6 +19,18 @@ export default function Products() {
 
   if (data?.length === 0) return <h1 className="text-center mt-10">No products found 😢</h1>
 
+  const filteredProducts = data?.filter((item) =>{
+
+    // search
+ const matchSearch= item.name.toLowerCase().includes(search.toLowerCase())
+
+  // category
+  const matchCategory =
+    !category || item.category === category;
+
+  return matchSearch && matchCategory;
+  }
+);
 
   return (
 
@@ -27,11 +45,13 @@ export default function Products() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 my-10 lg:p-0 sm:px-5 px-10 ">
           {
-             data.map((item) => (
+             filteredProducts.map((item) => (
               <ProductCard key={item._id} item={item} />    
             ))
           }
         </div>
+
+        
 
       </div>
     </div>

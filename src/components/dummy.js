@@ -2,6 +2,7 @@
   {
     "id": 1,
     "name": "Fresh Strawberry Pack",
+    "category": "Fruits",
     "price": 120,
     "discountPrice": 99,
     "description": "Sweet juicy farm fresh strawberries",
@@ -11,6 +12,7 @@
   {
     "id": 2,
     "name": "OLT Mixed Fruit Juice",
+    "category": "Juices",
     "price": 80,
     "discountPrice": 65,
     "description": "Refreshing chilled mixed fruit juice",
@@ -20,6 +22,7 @@
   {
     "id": 3,
     "name": "Natural Orange Juice",
+    "category": "Juices",
     "price": 90,
     "discountPrice": 70,
     "description": "Fresh squeezed pure orange juice",
@@ -29,6 +32,7 @@
   {
     "id": 4,
     "name": "Organic Branch Apple",
+    "category": "Fruits",
     "price": 150,
     "discountPrice": 120,
     "description": "Crisp healthy organic red apples",
@@ -38,6 +42,7 @@
   {
     "id": 5,
     "name": "Red Strawberry Premium",
+    "category": "Fruits",
     "price": 140,
     "discountPrice": 110,
     "description": "Premium quality big red strawberries",
@@ -47,6 +52,7 @@
   {
     "id": 6,
     "name": "Fresh Red Apple",
+    "category": "Fruits",
     "price": 130,
     "discountPrice": 100,
     "description": "Sweet crunchy delicious red apples",
@@ -56,6 +62,7 @@
   {
     "id": 7,
     "name": "Juicy Orange Pack",
+    "category": "Fruits",
     "price": 100,
     "discountPrice": 85,
     "description": "Tangy fresh juicy ripe oranges",
@@ -65,6 +72,7 @@
   {
     "id": 8,
     "name": "Strawberry Combo Pack",
+    "category": "Fruits",
     "price": 160,
     "discountPrice": 130,
     "description": "Fresh strawberries combo value pack",
@@ -74,6 +82,7 @@
   {
     "id": 9,
     "name": "Fresh Grapes Pack",
+    "category": "Fruits",
     "price": 110,
     "discountPrice": 90,
     "description": "Sweet seedless green fresh grapes",
@@ -83,6 +92,7 @@
   {
     "id": 10,
     "name": "Organic Mango",
+    "category": "Fruits",
     "price": 180,
     "discountPrice": 150,
     "description": "Sweet juicy ripe organic mango",
@@ -92,6 +102,7 @@
   {
     "id": 11,
     "name": "Fresh Guava",
+    "category": "Fruits",
     "price": 70,
     "discountPrice": 55,
     "description": "Healthy fiber rich fresh guava",
@@ -101,6 +112,7 @@
   {
     "id": 12,
     "name": "Banana Combo Pack",
+    "category": "Fruits",
     "price": 60,
     "discountPrice": 45,
     "description": "Energy rich fresh yellow bananas",
@@ -110,6 +122,7 @@
   {
     "id": 13,
     "name": "Green Apple Fresh",
+    "category": "Fruits",
     "price": 140,
     "discountPrice": 110,
     "description": "Crisp sour healthy green apples",
@@ -119,6 +132,7 @@
   {
     "id": 14,
     "name": "Fresh Raspberry Pack",
+    "category": "Fruits",
     "price": 200,
     "discountPrice": 170,
     "description": "Sweet tart fresh raspberry fruits",
@@ -128,6 +142,7 @@
   {
     "id": 15,
     "name": "Raw Green Mango",
+    "category": "Fruits",
     "price": 90,
     "discountPrice": 70,
     "description": "Tangy raw green mango fresh",
@@ -137,15 +152,17 @@
   {
     "id": 16,
     "name": "Pomegranate Fresh Pack",
+    "category": "Fruits",
     "price": 160,
     "discountPrice": 130,
     "description": "Juicy red healthy pomegranate seeds",
     "image": "https://res.cloudinary.com/di64c4vdh/image/upload/v1774971004/pomegranate_lsspi5.jpg",
     "rating": "⭐⭐⭐⭐⭐"
   },
-   {
+  {
     "id": 17,
     "name": "Fresh Blueberry Pack",
+    "category": "Fruits",
     "price": 220,
     "discountPrice": 190,
     "description": "Sweet antioxidant rich fresh blueberries",
@@ -155,6 +172,7 @@
   {
     "id": 18,
     "name": "Fresh Blackberry Pack",
+    "category": "Fruits",
     "price": 210,
     "discountPrice": 180,
     "description": "Juicy dark blackberries full of flavor",
@@ -164,6 +182,7 @@
   {
     "id": 19,
     "name": "Apple Juice Fresh",
+    "category": "Juices",
     "price": 95,
     "discountPrice": 75,
     "description": "Fresh extracted natural apple juice",
@@ -173,6 +192,7 @@
   {
     "id": 20,
     "name": "Fresh Pineapple",
+    "category": "Fruits",
     "price": 120,
     "discountPrice": 100,
     "description": "Sweet tropical ripe pineapple fruit",
@@ -182,6 +202,7 @@
   {
     "id": 21,
     "name": "Papaya Fresh",
+    "category": "Fruits",
     "price": 80,
     "discountPrice": 60,
     "description": "Soft sweet papaya rich in vitamins",
@@ -191,6 +212,7 @@
   {
     "id": 22,
     "name": "Fresh Lemon Pack",
+    "category": "Fruits",
     "price": 50,
     "discountPrice": 35,
     "description": "Tangy fresh lemons for daily use",
@@ -200,6 +222,7 @@
   {
     "id": 23,
     "name": "Watermelon Fresh",
+    "category": "Fruits",
     "price": 130,
     "discountPrice": 110,
     "description": "Cool refreshing juicy watermelon",
@@ -207,12 +230,13 @@
     "rating": "⭐⭐⭐⭐⭐"
   },
   {
-  "id": 24,
-  "name": "Black Grapes Fresh Pack",
-  "price": 120,
-  "discountPrice": 95,
-  "description": "Sweet juicy fresh black seedless grapes",
-  "image": "https://res.cloudinary.com/di64c4vdh/image/upload/q_auto/f_auto/v1776615534/grapes_igwljb.png",
-  "rating": "⭐⭐⭐⭐⭐"
-}
+    "id": 24,
+    "name": "Black Grapes Fresh Pack",
+    "category": "Fruits",
+    "price": 120,
+    "discountPrice": 95,
+    "description": "Sweet juicy fresh black seedless grapes",
+    "image": "https://res.cloudinary.com/di64c4vdh/image/upload/q_auto/f_auto/v1776615534/grapes_igwljb.png",
+    "rating": "⭐⭐⭐⭐⭐"
+  }
 ]
