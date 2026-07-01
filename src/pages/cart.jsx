@@ -8,7 +8,7 @@ import { handleBuyNow } from "../utils/deliveryFunction";
 
 export default function Cart() {
   const { user, isLoading: authLoading } = useAuth();
-  const navigate=useNavigate()
+  const navigate = useNavigate()
 
   const { data: cart, isLoading, error } = useGetCart();
 
@@ -37,33 +37,46 @@ export default function Cart() {
     <div className="p-6 bg-[#dcfff9] min-h-screen">
       <h1 className="text-3xl font-bold mb-6">🛒 My Cart</h1>
 
-      <div className="grid grid-cols-3 gap-6">
-        <div className="col-span-2 space-y-4">
+      <div>
+        <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
           {products.length === 0 ? (
-            <h2 className="text-center text-xl">Cart is Empty</h2>
+            <div className="bg-white rounded-xl shadow p-10 text-center">
+              <h2 className="text-2xl font-bold">🛒 Cart is Empty</h2>
+              <p className="text-gray-500 mt-2">
+                Add some products to your cart.
+              </p>
+
+              <button
+                onClick={() => navigate("/products")}
+                className="mt-5 bg-green-600 text-white px-5 py-2 rounded-lg hover:bg-green-700"
+              >
+                Continue Shopping
+              </button>
+            </div>
           ) : (
             products.map((item, index) => (
               <div
                 key={index}
-                className="flex gap-5 bg-white p-4 rounded-xl shadow hover:shadow-lg transition"
+                className="bg-white rounded-xl shadow hover:shadow-lg transition p-4 flex flex-col"
               >
                 <img
                   src={item.productId.image}
-                  className="w-28 h-28 object-cover rounded-lg"
+                  alt={item.productId.name}
+                  className="w-full h-48 object-cover rounded-lg"
                 />
 
-                <div className="flex-1">
+                <div className="mt-4 text-center flex flex-col flex-1">
                   <h2 className="text-lg font-semibold">
                     {item.productId.name}
                   </h2>
 
-                  <p className="text-gray-600 mt-1">
+                  <p className="text-gray-600 mt-1 text-center">
                     ₹{item.productId.price}
                   </p>
 
-                  <div className="flex items-center gap-3 mt-3">
+                  <div className="flex justify-center items-center gap-3 mt-3">
                     <button
-                      className="px-3 py-1 border rounded-lg hover:bg-gray-200"
+                      className="px-2 rounded-lg bg-gray-200 hover:bg-gray-400"
                       onClick={() =>
                         updateQty({
                           productId: item.productId._id,
@@ -77,7 +90,7 @@ export default function Cart() {
                     <span>{item.quantity}</span>
 
                     <button
-                      className="px-3 py-1 border rounded-lg hover:bg-gray-200"
+                      className="px-2 rounded-lg bg-gray-200 hover:bg-gray-400"
                       onClick={() =>
                         updateQty({
                           productId: item.productId._id,
@@ -88,49 +101,46 @@ export default function Cart() {
                       +
                     </button>
                   </div>
+                  <div className="mt-auto flex justify-center">
+                    <button
+                      className="bg-red-100 text-red-600 px-4 py-2 mt-3 h-fit rounded-lg hover:bg-red-200 self-center"
+                      onClick={() =>
+                        removeItem(item.productId._id)
+                      }
+                    >
+                      Remove
+                    </button>
+                  </div>
                 </div>
-
-                <button
-                  className="bg-red-100 text-red-600 px-4 py-2 h-fit rounded-lg hover:bg-red-200"
-                  onClick={() =>
-                    removeItem(item.productId._id)
-                  }
-                >
-                  Remove
-                </button>
               </div>
             ))
           )}
         </div>
 
-        <div className="bg-white p-5 rounded-xl shadow h-fit sticky top-5">
-          <h2 className="text-xl font-semibold mb-4">
-            Order Summary
-          </h2>
+        <div className="fixed bottom-0 left-0 right-0 bg-gray-100 shadow-2xl border-t border-gray-300 p-3 z-50">
+          <div className="flex flex-col justify-center items-center sm:flex-row sm:justify-between px-4">
 
-          <div className="flex justify-between">
-            <span>Subtotal</span>
-            <span>₹{total}</span>
-          </div>
+            <div className="flex flex-col md:flex-row justify-start gap-4">
 
-          <div className="flex justify-between mt-2">
-            <span>Delivery</span>
-            <span className="text-green-600">Free</span>
-          </div>
+              <div className="flex gap-2">
+                <span>Delivery</span><span className="text-green-600">Free</span>
+              </div>
 
-          <div className="border-t my-4"></div>
 
-          <div className="flex justify-between text-lg font-bold">
-            <span>Total</span>
-            <span>₹{total}</span>
-          </div>
+              <div className="flex text-lg font-bold">
+                <h2>Total: ₹{total}</h2>
+              </div>
 
+            </div>
+          <div>
           <button
-            className="w-full mt-5 bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700"
+            className="w-35 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700"
             onClick={() => handleBuyNow(user, navigate)}
-          >
-            Buy Now
+            >
+            Place Order
           </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
