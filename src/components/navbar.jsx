@@ -39,7 +39,7 @@ export default function Navbar() {
 
   }, [bar])
 
-  const { user, isLoading } = useAuth()
+  const { user} = useAuth()
 
   const role = user?.role
 
@@ -53,7 +53,6 @@ export default function Navbar() {
   const { data: wishlist } = useWishlist()
 
   const wishlistCount = wishlist?.length || 0
-  if (isLoading) return null
 
   const handleClick = () => {
     if (role === "admin") {
